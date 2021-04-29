@@ -1,0 +1,93 @@
+***** INTRODUCTION *****
+
+For your final assignment, you will create a Dockerized Flask application that provides a Web front-end to the well-known Linux programs 'cowsay' and 'fortune'.  Your application will reside in a GitHub repository that contains detailed and professional-looking instructions for how to build, deploy, run, and test your application.
+
+You may either work independently or with a partner on this assignment. If you work with a partner, you must notify me via email by the end of class on April 29, 2021.
+
+
+***** REQUIREMENTS *****
+
+1. Your application will exist in a GitHub repository named https://github.com/<yourusername>/webfortune/.
+
+
+2. The repository should have a Dockerfile that installs ubuntu:18.04 along with the packages for cowsay, fortune, and Python 3.8 (with pip3), and then it should run the application.  The commands for installing needed software into the container are:
+
+  FROM ubuntu:18.04                                                               
+  
+  RUN apt-get update
+  RUN apt-get install -y fortune fortunes
+  RUN apt-get install -y cowsay
+  RUN apt-get install -y python3.8
+  RUN apt-get install -y python3-pip
+
+  ENV PATH=$PATH:/usr/games
+  ENV LC_ALL=C.UTF-8
+  ENV LANG=C.UTF-8
+
+Everything else that is required to make your Flask application work in a container consists of commands we've used before.
+
+
+3. The repository should have a README.md that describes how to interact with your application.  It should tell how to build the Docker image, how to run the application (both from the command line and as a Docker image), and how to test the application (from the command line only).  The repository should also have a GitHub Action that runs your tests on the Flask application whenever a new commit is made to your repository.
+
+
+4. The application should run on port 5000 within the Docker container.  The 'docker run' command could then be used to forward any port on the host to the container's port 5000.
+
+
+5. The Flask application should support the following routes:
+
+  a. GET /fortune/
+  b. GET /cowsay/<message>
+  c. GET /cowfortune/
+  d. GET /
+
+(a) should simply display the output of the 'fortune' command.
+(b) should display the output of the 'cowsay' command given <message> as its command line input
+(c) should pipe the output of fortune as the input to the cowsay command.
+(d) redirects to (a)
+
+To do (d), use the following code:
+
+  @app.route('/')
+  def index():
+      return redirect(url_for('fortune'))
+
+  @app.route('/fortune/')
+  def fortune():
+      # Code that executes the fortune command goes here.
+      # Capture its output and return the output surrounded by the
+      # strings "<pre>" and "</pre>".
+
+To do (b), use the following code:
+
+  @app.route('/cowsay/<message>/')
+  def cowsay(message):
+      # Code goes here.
+
+
+***** HELP ON TESTING *****
+
+You may recall our class periods on testing, specifically how to test Flask applications.  As a reminder, you can use the following code as an example to help you test. Your tests will need to be more extensive than this.  Your instructor will intentionally mess up your code and possibly the environment to ensure that your tests properly fail when the code or environment runs afoul.
+
+  import pytest
+  from appserver import app as flask_app
+
+  @pytest.fixture
+  def app():
+      yield flask_app
+
+  @pytest.fixture
+  def client(app):
+      return app.test_client()
+
+  def test_cowsay(app, client):
+      message = 'hello'
+      res = client.get('/cowsay/%s/' % message)
+      assert res.status_code == 200
+      page_output = res.get_data(as_text=True)
+      assert expected in page_output
+
+
+***** SUBMISSION *****
+
+There is no submission necessary.  I will attempt to clone and use your GitHub project on the due date.
+
