@@ -12,10 +12,25 @@ def index():
 @app.route('/cowsay/')
 def cowsay(text):
     cow = subprocess.run(['cowsay', text], stdout=subprocess.PIPE)
-
+    message = cow.stdout.decode()
+    return '<pre>' + message + '</pre>'
 
 @app.route ('/cowfortune/')
-#run fortune, pipe it into cowsay and return it
+def cowfortune():
+    fortune = subprocess.run(['fortune'],stdout=subprocess.PIPE)
+    fmessage = fortune.stdout.decode()
+    
+    cow = subprocess.run(['cowsay', fmessage], stdout=subprocess.PIPE)
+    cmessage = cow.stdout.decode()
+
+    return '<pre>' + cmessage + '</pre>'
+
+    
+
+
+
+
+
 
 @app.route('/')
 def index():
