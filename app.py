@@ -9,8 +9,10 @@ def index():
     return fortune
 
 
-#@app.route('/cowsay/')
-#def return stuff
+@app.route('/cowsay/')
+def cowsay(text):
+    cow = subprocess.run(['cowsay', text], stdout=subprocess.PIPE)
+
 
 @app.route ('/cowfortune/')
 #run fortune, pipe it into cowsay and return it
