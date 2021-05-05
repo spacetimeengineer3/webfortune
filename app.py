@@ -19,7 +19,7 @@ def cowsay(text):
     message = cow.stdout.decode()
     return '<pre>' + message + '</pre>'
 
-@app.route ('/cowfortune/')
+@app.route ('/cowfortune/<text>/')
 def cowfortune():
     fortune = subprocess.run(['fortune'],stdout=subprocess.PIPE)
     fmessage = fortune.stdout.decode()
