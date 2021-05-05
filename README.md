@@ -3,7 +3,8 @@ This program lets users use the fortune, cowsay, and cowsay commands in their we
 
 # Docker
 ## Creating
-to create this application you need to have Docker installed on your computer of choice. To create the docker image enter: `docker build -t <name>` 
+to create this application you need to have Docker installed on your computer of choice. 
+To create the docker image enter: `docker build -t <name>` 
 `<name>` is what you want to name the docker image.
 
 ## Running
