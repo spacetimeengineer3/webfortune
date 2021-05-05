@@ -2,15 +2,16 @@ import subprocess
 import os
 from flask import Flask, render_template, request, session, redirect, url_for
 
-fortune = subprocess.run(['fortune'], stdout=subprocess.PIPE)
 
 app = Flask(__name__)
 #app.secret_key = b'REPLACE_ME_x#pi*CO0@^z'
 
 
 @app.route('/fortune/')
-def index1():
-    return fortune
+def fortune():
+    fortune = subprocess.run(['fortune'], stdout=subprocess.PIPE)
+    fmessage = fortune.stdout.decode()
+    return '<pre>' + fmessage + '</pre>'
 
 
 @app.route('/cowsay/')
