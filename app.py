@@ -25,12 +25,6 @@ def cowfortune():
 
     return '<pre>' + cmessage + '</pre>'
 
-    
-
-
-
-
-
 
 @app.route('/')
 def index():
