@@ -3,3 +3,6 @@ Welcome to the crazy world of DevOps. This program lets users use the fortune, c
 
 ## Running
 Simply run `curl https://raw.githubusercontent.com/spacetimeengineer3/webfortune/main/run.sh  | sudo sh` in a debian-based command line
+
+
+![pytest](https://githib.com/spacetimeengineer/webfortune/actions/workflow/run-tests.yml/badge.svg)
