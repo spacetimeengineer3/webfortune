@@ -1,7 +1,7 @@
 import subprocess
 import os
-
-from flask import Flask, render_template, requests, session, redirect, url_for
+import requests
+from flask import Flask, render_template, request, session, redirect, url_for
 
 app = Flask(__name__)
 
