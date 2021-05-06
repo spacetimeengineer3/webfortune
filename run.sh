@@ -1,8 +1,6 @@
 #!/bin/bash
 
 git clone https://github.com/spacetimeengineer3/webfortune
-cd webfortune
-exec bash
 
 docker build -t wibbene/webfortune webfortune/Dockerfile
 
