@@ -15,6 +15,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Install Cowsay
+      run: sudo apt-get install -y cowsay
+      
+    - name: install fortune
+      run: sudo apt-get install -y fortune
+      
     - uses: actions/checkout@v2
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
@@ -25,10 +31,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Install Cowsay
-      run: apt install -y cowsay
-    - name: install fortune
-      run: apt install -y fortune
+    
         
     - name: Lint with flake8
       run: |
