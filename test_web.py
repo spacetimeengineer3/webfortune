@@ -1,4 +1,5 @@
 import pytest
+import requests
 from app import app as flask_app
 
 @pytest.fixture

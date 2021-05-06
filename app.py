@@ -1,36 +1,24 @@
 import subprocess
 import os
-import requests
-from flask import Flask, render_template, request, session, redirect, url_for
 
-<<<<<<< HEAD
-=======
+from flask import Flask, render_template, requests, session, redirect, url_for
 
->>>>>>> 7c57174763159ac69db9c150d0b98e9b54313334
 app = Flask(__name__)
 
 
 @app.route('/fortune/')
-<<<<<<< HEAD
-def index1():
+def fortune():
     fortune = subprocess.run(['fortune'], stdout = subprocess.PIPE)
     message = fortune.stdout.decode()
     return '<pre>' + message + '</pre>'
-=======
-def fortune():
-    fortune = subprocess.run(['fortune'], stdout=subprocess.PIPE)
-    fmessage = fortune.stdout.decode()
-    return '<pre>' + fmessage + '</pre>'
->>>>>>> 7c57174763159ac69db9c150d0b98e9b54313334
 
-
-@app.route('/cowsay/')
+@app.route('/cowsay/<text>/')
 def cowsay(text):
     cow = subprocess.run(['cowsay', text], stdout=subprocess.PIPE)
     message = cow.stdout.decode()
     return '<pre>' + message + '</pre>'
 
-@app.route ('/cowfortune/<text>/')
+@app.route ('/cowfortune/')
 def cowfortune():
     fortune = subprocess.run(['fortune'],stdout=subprocess.PIPE)
     fmessage = fortune.stdout.decode()
