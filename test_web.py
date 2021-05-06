@@ -25,7 +25,7 @@ def test_fortune(app, client):
 def test_cowsay(app, client):
     message = 'hello'
     res = client.get('/cowsay/%s/' % message)
-    assert res.status_code == 302
+    assert res.status_code == 200
     page_output = res.get_data(as_text=True)
     assert message in page_output
 
