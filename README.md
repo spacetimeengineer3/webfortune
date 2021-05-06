@@ -5,6 +5,6 @@ Welcome to the crazy world of DevOps. This program lets users use the fortune, c
 Simply run `curl https://raw.githubusercontent.com/spacetimeengineer3/webfortune/main/run.sh  | sudo sh` in a debian-based command line
 
 
-![build](https://githib.com/spacetimeengineer/webfortune/actions/workflow/python-app.yml/badge.svg)
+![build] (https://github.com/spacetimeengineer3/webfortune/actions/workflows/python-app.yml/badge.svg)
 
 
