@@ -16,7 +16,7 @@ def client(app):
 
 def test_fortune(app, client):
     res = client.get('/')
-    assert res.status_code == 200
+    assert res.status_code == 302
     page_output = res.get_data(as_text=True)
     assert len(page_output) != 0
 
