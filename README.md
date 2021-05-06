@@ -6,3 +6,5 @@ Simply run `curl https://raw.githubusercontent.com/spacetimeengineer3/webfortune
 
 
 ![pytest](https://githib.com/spacetimeengineer/webfortune/actions/workflow/run-tests.yml/badge.svg)
+
+![python-app.yml](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
