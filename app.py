@@ -7,15 +7,10 @@ app = Flask(__name__)
 
 
 @app.route('/fortune/')
-def index1():
+def fortune():
     fortune = subprocess.run(['fortune'], stdout = subprocess.PIPE)
     message = fortune.stdout.decode()
     return '<pre>' + message + '</pre>'
-def fortune():
-    fortune = subprocess.run(['fortune'], stdout=subprocess.PIPE)
-    fmessage = fortune.stdout.decode()
-    return '<pre>' + fmessage + '</pre>'
-
 
 @app.route('/cowsay/')
 def cowsay(text):
@@ -36,4 +31,4 @@ def cowfortune():
 
 @app.route('/')
 def index():
-    return redirect(url_for('/fortune/'))
+    return redirect(url_for('fortune'))
