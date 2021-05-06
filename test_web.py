@@ -15,7 +15,7 @@ def client(app):
 #Different Tests
 
 def test_fortune(app, client):
-    res = client.get('/')
+    res = client.get('/fortune/')
     assert res.status_code == 200
     page_output = res.get_data(as_text=True)
     assert len(page_output) != 0
