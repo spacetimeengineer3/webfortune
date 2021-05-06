@@ -16,10 +16,10 @@ jobs:
 
     steps:
     - name: Install Cowsay
-      run: apt-get install -y cowsay
+      run: sudo apt-get install -y cowsay
       
     - name: install fortune
-      run: apt-get install -y fortune
+      run: sudo apt-get install -y fortune
       
     - uses: actions/checkout@v2
     - name: Set up Python 3.9
