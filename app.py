@@ -12,13 +12,13 @@ def fortune():
     message = fortune.stdout.decode()
     return '<pre>' + message + '</pre>'
 
-@app.route('/cowsay/')
+@app.route('/cowsay/<text>/')
 def cowsay(text):
     cow = subprocess.run(['cowsay', text], stdout=subprocess.PIPE)
     message = cow.stdout.decode()
     return '<pre>' + message + '</pre>'
 
-@app.route ('/cowfortune/<text>/')
+@app.route ('/cowfortune/')
 def cowfortune():
     fortune = subprocess.run(['fortune'],stdout=subprocess.PIPE)
     fmessage = fortune.stdout.decode()
